@@ -1,69 +1,130 @@
-import Image from "next/image";
+"use client"
+
+import Link from "next/link"
+import { useSession } from "next-auth/react"
+
+const steps = [
+  {
+    number: "01",
+    title: "Create your page",
+    description: "Sign in and set up a page that tells people what you are creating.",
+  },
+  {
+    number: "02",
+    title: "Share your link",
+    description: "Invite your community to visit your page and leave you a chai.",
+  },
+  {
+    number: "03",
+    title: "Get supported",
+    description: "Receive contributions securely through Razorpay checkout.",
+  },
+]
 
 export default function Home() {
+  const { data: session } = useSession()
+  const startHref = session ? "/dashboard" : "/login"
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.js
-            </code>{" "}
-            file.
+    <main className="text-white">
+      <section className="relative flex min-h-[calc(80svh-5rem)] items-center justify-center overflow-hidden px-4 py-20 text-center sm:px-6 sm:py-28">
+        <div className="pointer-events-none absolute left-1/2 top-1/2 size-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-500/10 blur-[100px] sm:size-96" />
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm text-slate-300 backdrop-blur-md">
+            <span aria-hidden="true">☕</span>
+            <span>A little help, one chai at a time</span>
+          </div>
+
+          <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl md:text-8xl">
+            GetMe
+            <span className="bg-linear-to-r from-[#f59e0b] via-[#f97316] to-[#ec4899] bg-clip-text text-transparent">
+              AChai
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-400 sm:text-xl sm:leading-8">
+            Let&apos;s take a chai break together. Share a little kindness, support a
+            dream, and make someone&apos;s day.
           </p>
+
+          <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4">
+            <Link
+              href={startHref}
+              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-linear-to-r from-[#f97316] via-[#ea580c] to-[#db2777] px-8 py-3 font-bold text-white shadow-[0_0_30px_rgba(249,115,22,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(249,115,22,0.4)]"
+            >
+              {session ? "Open your dashboard" : "Start your page"}
+              <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+            </Link>
+            <a
+              href="#how-it-works"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/10 bg-white/5 px-8 py-3 font-semibold text-slate-200 backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/10"
+            >
+              How it works
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section id="community" className="scroll-mt-24 border-y border-white/10 bg-white/[0.02] px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-300">Made for creators</p>
+            <h2 className="mt-3 text-2xl font-extrabold tracking-tight sm:text-4xl">
+              Your fans are just <span className="text-[#f4a261]">one chai away.</span> ☕
+            </h2>
+            <p className="mt-4 leading-7 text-slate-400">
+              Give your community a simple way to support the work they love.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-3 sm:gap-6">
+            {["Share your creativity", "Build with your community", "Keep making what you love"].map((item) => (
+              <div key={item} className="rounded-2xl border border-white/10 bg-slate-900/70 p-6 text-center shadow-lg shadow-black/10">
+                <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-orange-400/10 text-3xl" aria-hidden="true">
+                  ☕
+                </div>
+                <h3 className="font-bold text-white">{item}</h3>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
-  );
+      </section>
+
+      <section id="how-it-works" className="scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-300">Simple by design</p>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">How it works</h2>
+            </div>
+            <Link href={startHref} className="font-semibold text-orange-300 transition hover:text-orange-200">
+              {session ? "Go to your dashboard" : "Create your page"} <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3 md:gap-6">
+            {steps.map((step) => (
+              <article key={step.number} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-7">
+                <p className="text-sm font-bold tracking-widest text-orange-300">{step.number}</p>
+                <h3 className="mt-4 text-xl font-bold">{step.title}</h3>
+                <p className="mt-2 leading-7 text-slate-400">{step.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="scroll-mt-24 px-4 pb-16 sm:px-6 sm:pb-20">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-5 rounded-3xl border border-orange-300/15 bg-linear-to-br from-orange-400/10 to-pink-500/5 p-6 sm:flex-row sm:items-center sm:p-10">
+          <div>
+            <h2 className="text-2xl font-extrabold sm:text-3xl">Make space for your next idea.</h2>
+            <p className="mt-2 max-w-xl leading-7 text-slate-300">Create your page and let your supporters be part of what comes next.</p>
+          </div>
+          <Link href={startHref} className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full bg-orange-500 px-6 py-3 font-bold text-white transition hover:bg-orange-400">
+            {session ? "Open dashboard" : "Get started"} <span aria-hidden="true" className="ml-2">→</span>
+          </Link>
+        </div>
+      </section>
+    </main>
+  )
 }
