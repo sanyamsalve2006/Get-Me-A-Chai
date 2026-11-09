@@ -1,3 +1,5 @@
+import dns from "node:dns";
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
@@ -5,6 +7,7 @@ import FacebookProvider from "next-auth/providers/facebook"
 import DiscordProvider from "next-auth/providers/discord"
 import User from "@/models/User"
 import mongoose from "mongoose"
+
 
 async function connectDatabase() {
   if (mongoose.connection.readyState === 1) {
@@ -63,13 +66,20 @@ export const authOptions = {
   providers,
   callbacks: {
     async signIn({ user, profile }) {
+      console.log("1. GitHub sign-in started");
+      console.log("2. User email:", user.email);
       if (!user.email) {
         return false
       }
 
       await connectDatabase()
 
+      console.log("3. Database connected");
+      console.log("4. Database name:", mongoose.connection.name);
+
       let currentUser = await User.findOne({ email: user.email })
+
+      console.log("5. Existing user:", !!currentUser);
       if (!currentUser) {
         const preferredUsername =
           typeof profile?.login === "string"

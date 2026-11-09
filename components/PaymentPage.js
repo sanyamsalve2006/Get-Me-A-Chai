@@ -103,7 +103,7 @@ const PaymentPage = ({ username }) => {
             checkout.open()
         } catch (error) {
             setPaymentMessage(error.message || "Could not start the payment.")
-            setIsPaying(false)``
+            setIsPaying(false)
         }
     }
 
