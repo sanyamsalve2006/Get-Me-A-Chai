@@ -156,7 +156,7 @@ const PaymentPage = ({ username }) => {
                 <section className="mx-auto mt-2 flex w-full max-w-6xl flex-col gap-6 px-4 pt-12 sm:px-6 sm:pt-14">
                     <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                         <div className="min-w-0">
-                            <h1 className="break-words text-3xl font-extrabold sm:text-4xl">{currentuser?.name || username}</h1>
+                            <h1 className="wrap-break-word text-3xl font-extrabold sm:text-4xl">{currentuser?.name || username}</h1>
                             <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
                                 Support {currentuser?.name || username} and help make their next idea happen.
                             </p>
@@ -183,7 +183,7 @@ const PaymentPage = ({ username }) => {
                             <div className="max-h-96 space-y-2 overflow-y-auto pr-1">
                                 {payment.map((p) => (
                                     <div key={p._id} className="flex items-center justify-between gap-3 rounded-xl bg-zinc-800 p-3">
-                                        <span className="min-w-0 break-words text-white">{p.name}</span>
+                                        <span className="min-w-0 wrap-break-word text-white">{p.name}</span>
                                         <span className="shrink-0 font-semibold text-amber-400">₹{(Number(p.amount) / 100).toLocaleString("en-IN")}</span>
                                     </div>
                                 ))}

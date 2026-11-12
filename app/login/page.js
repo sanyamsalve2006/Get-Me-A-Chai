@@ -91,7 +91,7 @@ export default function LoginOptions() {
                 onClick={() => handleSignIn(id)}
                 disabled={isDisabled}
                 aria-label={isConfigured ? label : `${label} (not configured)`}
-                className="flex min-h-12 w-full items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-5 py-3.5 font-semibold text-slate-200 outline-none transition-colors hover:border-white/20 hover:bg-white/[0.08] focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex min-h-12 w-full items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/4 px-5 py-3.5 font-semibold text-slate-200 outline-none transition-colors hover:border-white/20 hover:bg-white/8 focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <Icon className="shrink-0 text-lg text-white" aria-hidden="true" />
                 <span>

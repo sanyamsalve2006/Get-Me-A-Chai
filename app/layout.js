@@ -31,11 +31,11 @@ export default function RootLayout({ children }) {
         <Navbar />
         <div className="relative min-h-auto  overflow-hidden bg-[#0b1120]">
 
-          <div className="absolute -top-40 -left-40 h-125 w-125 rounded-full bg-blue-600/20 blur-[120px]" />
+          <div className="pointer-events-none absolute -top-40 -left-40 h-125 w-125 rounded-full bg-blue-600/20 blur-[120px]" />
 
-          <div className="absolute top-1/3 -right-40 h-125 w-125 rounded-full bg-indigo-500/15 blur-[120px]" />
+          <div className="pointer-events-none absolute top-1/3 -right-40 h-125 w-125 rounded-full bg-indigo-500/15 blur-[120px]" />
 
-          <div className="absolute -bottom-40 left-1/3 h-112.5 w-112.5 rounded-full bg-cyan-500/10 blur-[120px]" />
+          <div className="pointer-events-none absolute -bottom-40 left-1/3 h-112.5 w-112.5 rounded-full bg-cyan-500/10 blur-[120px]" />
 
           <div className="relative z-10">
             {/* Your content */}
